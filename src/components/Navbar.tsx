@@ -5,30 +5,28 @@ import { ChevronDown, Menu, X } from 'lucide-react';
 
 const navItems = [
   {
-    label: 'Use Cases',
+    label: 'Features',
     hasDropdown: true,
     items: [
-      { label: 'AI Ad Generator', href: '#' },
-      { label: 'Video Ads', href: '#' },
-      { label: 'Social Media Posts', href: '#' },
-      { label: 'Product Photography', href: '#' },
-      { label: 'UGC Videos', href: '#' },
+      { label: 'AI Image Generator', href: '/features/image-generator' },
+      { label: 'AI Video Generator', href: '/features/video-generator' },
+      { label: 'Social Media Posts', href: '/features/social-media' },
+      { label: 'Product Photography', href: '/features/product-photography' },
     ],
   },
   {
     label: 'Solutions',
     hasDropdown: true,
     items: [
-      { label: 'For Agencies', href: '#' },
-      { label: 'For E-commerce', href: '#' },
-      { label: 'For Enterprises', href: '#' },
-      { label: 'For Small Business', href: '#' },
+      { label: 'For Agencies', href: '/solutions/agencies' },
+      { label: 'For E-commerce', href: '/solutions/ecommerce' },
+      { label: 'For Enterprises', href: '/solutions/enterprise' },
     ],
   },
-  { label: 'Features', href: '#features' },
-  { label: 'API', href: '#api' },
-  { label: 'Pricing', href: '#pricing' },
-  { label: 'Demo', href: '#demo' },
+  { label: 'Pricing', href: '/#pricing' },
+  { label: 'Blog', href: '/blog' },
+  { label: 'About', href: '/about' },
+  { label: 'Contact', href: '/contact' },
 ];
 
 export const Navbar = () => {
