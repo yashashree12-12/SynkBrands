@@ -12,6 +12,7 @@ import Contact from "./pages/Contact";
 import Blog from "./pages/Blog";
 import Create from "./pages/Create";
 import Auth from "./pages/Auth";
+import Dashboard from "./pages/Dashboard";
 import ImageGenerator from "./pages/features/ImageGenerator";
 import VideoGenerator from "./pages/features/VideoGenerator";
 import SocialMediaPosts from "./pages/features/SocialMediaPosts";
@@ -22,6 +23,9 @@ import CarouselAds from "./pages/features/CarouselAds";
 import MemeGenerator from "./pages/features/MemeGenerator";
 import ContentScheduler from "./pages/features/ContentScheduler";
 import CompetitorAnalysis from "./pages/features/CompetitorAnalysis";
+import Agencies from "./pages/solutions/Agencies";
+import Ecommerce from "./pages/solutions/Ecommerce";
+import Creators from "./pages/solutions/Creators";
 
 const queryClient = new QueryClient();
 
@@ -36,36 +40,34 @@ const App = () => (
             <Routes>
               <Route path="/" element={<Index />} />
               <Route path="/auth" element={<Auth />} />
+              <Route path="/dashboard" element={<Dashboard />} />
               <Route path="/about" element={<About />} />
               <Route path="/contact" element={<Contact />} />
               <Route path="/blog" element={<Blog />} />
               <Route path="/create" element={<Create />} />
               <Route path="/create/:type" element={<Create />} />
+              
+              {/* Feature Pages */}
               <Route path="/features/image-generator" element={<ImageGenerator />} />
               <Route path="/features/video-generator" element={<VideoGenerator />} />
               <Route path="/features/social-media" element={<SocialMediaPosts />} />
               <Route path="/features/product-photography" element={<ProductPhotography />} />
               <Route path="/features/ad-generator" element={<AIAdGenerator />} />
-              <Route path="/features/facebook-ads" element={<AIAdGenerator />} />
-              <Route path="/features/instagram-ads" element={<AIAdGenerator />} />
-              <Route path="/features/linkedin-ads" element={<AIAdGenerator />} />
-              <Route path="/features/tiktok-ads" element={<AIAdGenerator />} />
-              <Route path="/features/youtube-ads" element={<AIAdGenerator />} />
-              <Route path="/features/pinterest-ads" element={<AIAdGenerator />} />
               <Route path="/features/ugc-videos" element={<UGCVideos />} />
-              <Route path="/features/instagram-reels" element={<VideoGenerator />} />
-              <Route path="/features/tiktok-video" element={<VideoGenerator />} />
-              <Route path="/features/youtube-shorts" element={<VideoGenerator />} />
-              <Route path="/features/voiceover-video" element={<UGCVideos />} />
               <Route path="/features/carousel-ads" element={<CarouselAds />} />
-              <Route path="/features/instagram-carousel" element={<CarouselAds />} />
-              <Route path="/features/linkedin-carousel" element={<CarouselAds />} />
               <Route path="/features/meme-generator" element={<MemeGenerator />} />
               <Route path="/features/content-scheduler" element={<ContentScheduler />} />
               <Route path="/features/competitor-analysis" element={<CompetitorAnalysis />} />
+              
+              {/* Solution Pages */}
+              <Route path="/solutions/agencies" element={<Agencies />} />
+              <Route path="/solutions/ecommerce" element={<Ecommerce />} />
+              <Route path="/solutions/creators" element={<Creators />} />
+              
+              {/* Catch-all routes for features */}
               <Route path="/features/*" element={<ImageGenerator />} />
-              <Route path="/solutions/*" element={<About />} />
               <Route path="/api/*" element={<VideoGenerator />} />
+              
               <Route path="*" element={<NotFound />} />
             </Routes>
           </BrowserRouter>
