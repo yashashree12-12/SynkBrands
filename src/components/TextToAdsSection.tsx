@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
-import { Image, Palette, FileText, Globe, LayoutGrid } from 'lucide-react';
+import { FileText, Palette, Globe, LayoutGrid, Sparkles, PenTool, Languages, Maximize2 } from 'lucide-react';
 
 const tabs = [
   { id: 'text-to-ads', label: 'Text-to-Ads', icon: FileText },
@@ -16,35 +16,35 @@ const tabContent = {
     description: 'No ad campaign deck, no constant brainstorming, and no more publishing panic for your marketing team! With just a few lines of text, SynkBrands AI ad generator churns out powerful and eye-catching ad content, in your brand guidelines.',
     cta: 'Generate Ads',
     color: 'from-orange-400 to-red-500',
-    icon: '✨',
+    Icon: Sparkles,
   },
   'branded-ads': {
     title: 'Effortlessly Integrate Your Brand Into Every Ad',
     description: 'Synchronize your brand language and brand tone with every ad. Once you add a few details on logo, tonality, colors, fonts, and themes to SynkBrands, your brand will come alive effortlessly in your ads.',
     cta: 'Make Ads',
     color: 'from-green-400 to-emerald-500',
-    icon: '🎨',
+    Icon: Palette,
   },
   'ad-copies': {
     title: 'Create Stunning Ad Copy on Autopilot',
     description: 'SynkBrands not only makes the creative, it generates the text that goes inside the ad creative. It also generates the ad caption, ad headlines, hashtags and ad copies for your ad creatives.',
     cta: 'Create Ads with AI',
     color: 'from-red-400 to-pink-500',
-    icon: '📝',
+    Icon: PenTool,
   },
   'multilingual': {
     title: 'Supports 19+ Languages',
     description: 'Reach a whole new scale of audience and facilitate more authentic connections. Generate ad creatives in over 19 languages, SynkBrands removes all restrictions you could have had reaching your global target audience.',
     cta: 'Create Ads with AI',
     color: 'from-blue-400 to-cyan-500',
-    icon: '🌍',
+    Icon: Languages,
   },
   'multiformat': {
     title: 'Create Ads in Multiple Ad Formats',
     description: 'From video ads that grab attention, to static visuals that tell your story in a glance, to animated ads that add motion and energy. No matter your goal or platform, we make it easy to generate ad creatives.',
     cta: 'Create Ads',
     color: 'from-purple-400 to-violet-500',
-    icon: '📐',
+    Icon: Maximize2,
   },
 };
 
@@ -81,7 +81,7 @@ export const TextToAdsSection = () => {
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           <div className="space-y-6 animate-fade-in" key={activeTab}>
             <div className={`inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-gradient-to-br ${content.color}`}>
-              <span className="text-2xl">{content.icon}</span>
+              <content.Icon className="w-7 h-7 text-white" />
             </div>
             <h3 className="font-display text-2xl lg:text-3xl font-bold text-foreground">
               {content.title}
@@ -96,7 +96,9 @@ export const TextToAdsSection = () => {
 
           <div className="animate-fade-in" key={`${activeTab}-image`}>
             <div className={`aspect-square rounded-3xl bg-gradient-to-br ${content.color} flex items-center justify-center shadow-2xl`}>
-              <span className="text-9xl">{content.icon}</span>
+              <div className="w-32 h-32 rounded-3xl bg-white/20 backdrop-blur-sm flex items-center justify-center">
+                <content.Icon className="w-16 h-16 text-white" />
+              </div>
             </div>
           </div>
         </div>

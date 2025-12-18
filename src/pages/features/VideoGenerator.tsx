@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { Navbar } from '@/components/Navbar';
 import { Footer } from '@/components/Footer';
 import { Button } from '@/components/ui/button';
-import { Check, Sparkles, Zap, Film, Download, Music, Video, Wand2 } from 'lucide-react';
+import { Check, Sparkles, Zap, Film, Download, Music, Video, Wand2, ShoppingBag, Smartphone, BookOpen, Clapperboard } from 'lucide-react';
 
 const features = [
   { icon: Film, title: 'AI Video Creation', description: 'Generate professional videos from text descriptions or product images.' },
@@ -15,10 +15,10 @@ const features = [
 ];
 
 const videoTypes = [
-  { title: 'Product Videos', description: 'Showcase your products in action', image: '🛍️', duration: '15-60s' },
-  { title: 'Social Ads', description: 'Scroll-stopping video ads', image: '📱', duration: '6-15s' },
-  { title: 'Story Videos', description: 'Vertical format for stories', image: '📖', duration: '15s' },
-  { title: 'UGC Videos', description: 'Authentic creator-style content', image: '🎬', duration: '30-90s' },
+  { title: 'Product Videos', description: 'Showcase your products in action', Icon: ShoppingBag, duration: '15-60s' },
+  { title: 'Social Ads', description: 'Scroll-stopping video ads', Icon: Smartphone, duration: '6-15s' },
+  { title: 'Story Videos', description: 'Vertical format for stories', Icon: BookOpen, duration: '15s' },
+  { title: 'UGC Videos', description: 'Authentic creator-style content', Icon: Clapperboard, duration: '30-90s' },
 ];
 
 const VideoGenerator = () => {
@@ -37,7 +37,7 @@ const VideoGenerator = () => {
           <div className="absolute inset-0 bg-gradient-to-b from-accent/5 to-transparent" />
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
             <div className="grid lg:grid-cols-2 gap-12 items-center">
-              <div>
+              <div className="animate-fade-in">
                 <div className="inline-flex items-center gap-2 px-4 py-2 bg-accent/10 rounded-full mb-6">
                   <Video className="w-5 h-5 text-accent" />
                   <span className="text-sm font-medium text-accent">AI Video Generator</span>
@@ -50,7 +50,7 @@ const VideoGenerator = () => {
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4">
                   <Link to="/create/video">
-                    <Button variant="hero" size="lg">
+                    <Button variant="hero" size="lg" className="hover-lift">
                       Start Creating
                       <Sparkles className="w-5 h-5 ml-2" />
                     </Button>
@@ -66,8 +66,8 @@ const VideoGenerator = () => {
                   ))}
                 </div>
               </div>
-              <div className="relative">
-                <div className="aspect-video rounded-3xl bg-gradient-to-br from-accent via-primary to-accent/50 p-6 flex items-center justify-center overflow-hidden">
+              <div className="relative animate-scale-in">
+                <div className="aspect-video rounded-3xl bg-gradient-to-br from-accent via-primary to-accent/50 p-6 flex items-center justify-center overflow-hidden shadow-2xl">
                   <div className="bg-card/90 backdrop-blur rounded-2xl p-6 w-full">
                     <div className="flex items-center gap-3 mb-4">
                       <div className="w-10 h-10 rounded-xl bg-accent/10 flex items-center justify-center">
@@ -79,7 +79,7 @@ const VideoGenerator = () => {
                       </div>
                     </div>
                     <div className="aspect-video bg-secondary rounded-xl mb-4 flex items-center justify-center relative overflow-hidden">
-                      <div className="absolute inset-0 bg-gradient-to-r from-accent/20 to-primary/20 animate-pulse" />
+                      <div className="absolute inset-0 bg-gradient-to-r from-accent/20 to-primary/20 animate-pulse-slow" />
                       <Film className="w-12 h-12 text-muted-foreground" />
                     </div>
                     <div className="flex items-center gap-2">
@@ -107,8 +107,10 @@ const VideoGenerator = () => {
             </div>
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
               {videoTypes.map((type) => (
-                <div key={type.title} className="group p-6 rounded-2xl bg-card border border-border hover:border-accent/50 transition-all hover:-translate-y-1">
-                  <div className="text-5xl mb-4">{type.image}</div>
+                <div key={type.title} className="group p-6 rounded-2xl bg-card border border-border hover:border-accent/50 transition-all hover-lift">
+                  <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-accent to-primary flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                    <type.Icon className="w-7 h-7 text-white" />
+                  </div>
                   <h3 className="font-display text-lg font-bold text-foreground mb-2">{type.title}</h3>
                   <p className="text-sm text-muted-foreground mb-3">{type.description}</p>
                   <span className="inline-block px-3 py-1 bg-accent/10 text-accent text-xs font-medium rounded-full">
@@ -133,8 +135,10 @@ const VideoGenerator = () => {
             </div>
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
               {features.map((feature) => (
-                <div key={feature.title} className="p-6 rounded-2xl bg-card border border-border hover:border-accent/50 transition-colors">
-                  <feature.icon className="w-12 h-12 text-accent mb-4" />
+                <div key={feature.title} className="p-6 rounded-2xl bg-card border border-border hover:border-accent/50 transition-all hover-lift group">
+                  <div className="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center mb-4 group-hover:bg-accent/20 transition-colors">
+                    <feature.icon className="w-6 h-6 text-accent" />
+                  </div>
                   <h3 className="font-display text-xl font-bold text-foreground mb-2">{feature.title}</h3>
                   <p className="text-muted-foreground">{feature.description}</p>
                 </div>
@@ -160,8 +164,8 @@ const VideoGenerator = () => {
                 { step: '02', title: 'AI Generates Video', description: 'Our AI creates your video with scenes, transitions, and music.' },
                 { step: '03', title: 'Export & Share', description: 'Download your video or share directly to social media.' },
               ].map((item) => (
-                <div key={item.step} className="text-center">
-                  <div className="w-16 h-16 rounded-full bg-gradient-to-br from-accent to-primary text-primary-foreground font-display text-xl font-bold flex items-center justify-center mx-auto mb-6">
+                <div key={item.step} className="text-center group">
+                  <div className="w-16 h-16 rounded-full bg-gradient-to-br from-accent to-primary text-primary-foreground font-display text-xl font-bold flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform">
                     {item.step}
                   </div>
                   <h3 className="font-display text-xl font-bold text-foreground mb-2">{item.title}</h3>
@@ -182,7 +186,7 @@ const VideoGenerator = () => {
               Start generating professional marketing videos for free. No credit card required.
             </p>
             <Link to="/create/video">
-              <Button variant="hero" size="lg">
+              <Button variant="hero" size="lg" className="hover-lift">
                 Try Video Generator Free
                 <Sparkles className="w-5 h-5 ml-2" />
               </Button>

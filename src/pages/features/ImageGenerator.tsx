@@ -14,11 +14,13 @@ const features = [
   { icon: Wand2, title: 'Smart Editing', description: 'AI-powered tools to enhance and modify your generated images.' },
 ];
 
+import { Smartphone, ShoppingBag, BookOpen, LayoutTemplate } from 'lucide-react';
+
 const useCases = [
-  { title: 'Social Media Posts', description: 'Eye-catching posts for all platforms', image: '📱' },
-  { title: 'Product Ads', description: 'Convert browsers into buyers', image: '🛍️' },
-  { title: 'Story Graphics', description: 'Engaging Instagram & Facebook stories', image: '📖' },
-  { title: 'Banner Ads', description: 'Professional display advertisements', image: '🖼️' },
+  { title: 'Social Media Posts', description: 'Eye-catching posts for all platforms', Icon: Smartphone },
+  { title: 'Product Ads', description: 'Convert browsers into buyers', Icon: ShoppingBag },
+  { title: 'Story Graphics', description: 'Engaging Instagram & Facebook stories', Icon: BookOpen },
+  { title: 'Banner Ads', description: 'Professional display advertisements', Icon: LayoutTemplate },
 ];
 
 const ImageGenerator = () => {
@@ -130,8 +132,10 @@ const ImageGenerator = () => {
             </div>
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
               {useCases.map((useCase) => (
-                <div key={useCase.title} className="group p-6 rounded-2xl bg-card border border-border hover:border-primary/50 transition-all hover:-translate-y-1">
-                  <div className="text-5xl mb-4">{useCase.image}</div>
+                <div key={useCase.title} className="group p-6 rounded-2xl bg-card border border-border hover:border-primary/50 transition-all hover-lift">
+                  <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-primary to-accent flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                    <useCase.Icon className="w-7 h-7 text-white" />
+                  </div>
                   <h3 className="font-display text-lg font-bold text-foreground mb-2">{useCase.title}</h3>
                   <p className="text-sm text-muted-foreground">{useCase.description}</p>
                 </div>

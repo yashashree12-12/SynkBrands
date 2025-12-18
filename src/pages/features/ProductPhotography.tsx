@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { Navbar } from '@/components/Navbar';
 import { Footer } from '@/components/Footer';
 import { Button } from '@/components/ui/button';
-import { Check, Sparkles, Camera, Layers, Palette, Download, Zap, Image } from 'lucide-react';
+import { Check, Sparkles, Camera, Layers, Palette, Download, Zap, Image, Smartphone, Shirt, Coffee, Sparkle } from 'lucide-react';
 
 const features = [
   { icon: Camera, title: 'Studio Quality', description: 'Generate professional product photos that look like they were shot in a studio.' },
@@ -15,10 +15,10 @@ const features = [
 ];
 
 const beforeAfter = [
-  { before: '📱', after: '✨📱✨', label: 'Electronics' },
-  { before: '👕', after: '🎨👕🎨', label: 'Fashion' },
-  { before: '🥤', after: '💫🥤💫', label: 'Beverages' },
-  { before: '💄', after: '💎💄💎', label: 'Cosmetics' },
+  { BeforeIcon: Smartphone, AfterIcon: Smartphone, label: 'Electronics' },
+  { BeforeIcon: Shirt, AfterIcon: Shirt, label: 'Fashion' },
+  { BeforeIcon: Coffee, AfterIcon: Coffee, label: 'Beverages' },
+  { BeforeIcon: Sparkle, AfterIcon: Sparkle, label: 'Cosmetics' },
 ];
 
 const ProductPhotography = () => {
@@ -37,7 +37,7 @@ const ProductPhotography = () => {
           <div className="absolute inset-0 bg-gradient-to-b from-primary/5 to-transparent" />
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
             <div className="grid lg:grid-cols-2 gap-12 items-center">
-              <div>
+              <div className="animate-fade-in">
                 <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary/10 rounded-full mb-6">
                   <Camera className="w-5 h-5 text-primary" />
                   <span className="text-sm font-medium text-primary">AI Product Photography</span>
@@ -50,7 +50,7 @@ const ProductPhotography = () => {
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4">
                   <Link to="/create/product">
-                    <Button variant="hero" size="lg">
+                    <Button variant="hero" size="lg" className="hover-lift">
                       Try It Free
                       <Sparkles className="w-5 h-5 ml-2" />
                     </Button>
@@ -66,23 +66,23 @@ const ProductPhotography = () => {
                   ))}
                 </div>
               </div>
-              <div className="relative">
+              <div className="relative animate-scale-in">
                 <div className="grid grid-cols-2 gap-4">
                   <div className="space-y-4">
-                    <div className="aspect-square rounded-2xl bg-secondary flex items-center justify-center text-6xl">
-                      📱
+                    <div className="aspect-square rounded-2xl bg-secondary flex items-center justify-center">
+                      <Smartphone className="w-16 h-16 text-muted-foreground" />
                     </div>
                     <div className="p-3 rounded-xl bg-card border border-border text-center text-sm text-muted-foreground">
                       Before
                     </div>
                   </div>
                   <div className="space-y-4">
-                    <div className="aspect-square rounded-2xl bg-gradient-to-br from-primary/20 via-accent/20 to-primary/20 flex items-center justify-center text-6xl relative">
-                      📱
+                    <div className="aspect-square rounded-2xl bg-gradient-to-br from-primary/20 via-accent/20 to-primary/20 flex items-center justify-center relative overflow-hidden">
+                      <Smartphone className="w-16 h-16 text-primary" />
                       <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-transparent rounded-2xl" />
                     </div>
-                    <div className="p-3 rounded-xl bg-primary text-primary-foreground text-center text-sm font-medium">
-                      After ✨
+                    <div className="p-3 rounded-xl bg-primary text-primary-foreground text-center text-sm font-medium flex items-center justify-center gap-2">
+                      After <Sparkles className="w-4 h-4" />
                     </div>
                   </div>
                 </div>
@@ -104,13 +104,13 @@ const ProductPhotography = () => {
             </div>
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
               {beforeAfter.map((item) => (
-                <div key={item.label} className="bg-card rounded-2xl border border-border overflow-hidden">
+                <div key={item.label} className="bg-card rounded-2xl border border-border overflow-hidden hover-lift">
                   <div className="grid grid-cols-2">
-                    <div className="aspect-square bg-secondary flex items-center justify-center text-4xl border-r border-border">
-                      {item.before}
+                    <div className="aspect-square bg-secondary flex items-center justify-center border-r border-border">
+                      <item.BeforeIcon className="w-10 h-10 text-muted-foreground" />
                     </div>
-                    <div className="aspect-square bg-gradient-to-br from-primary/10 to-accent/10 flex items-center justify-center text-4xl">
-                      {item.after}
+                    <div className="aspect-square bg-gradient-to-br from-primary/10 to-accent/10 flex items-center justify-center">
+                      <item.AfterIcon className="w-10 h-10 text-primary" />
                     </div>
                   </div>
                   <div className="p-4 text-center">
@@ -135,8 +135,10 @@ const ProductPhotography = () => {
             </div>
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
               {features.map((feature) => (
-                <div key={feature.title} className="p-6 rounded-2xl bg-card border border-border hover:border-primary/50 transition-colors">
-                  <feature.icon className="w-12 h-12 text-primary mb-4" />
+                <div key={feature.title} className="p-6 rounded-2xl bg-card border border-border hover:border-primary/50 transition-all hover-lift group">
+                  <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-colors">
+                    <feature.icon className="w-6 h-6 text-primary" />
+                  </div>
                   <h3 className="font-display text-xl font-bold text-foreground mb-2">{feature.title}</h3>
                   <p className="text-muted-foreground">{feature.description}</p>
                 </div>
@@ -155,7 +157,7 @@ const ProductPhotography = () => {
               Start creating professional product imagery today. No credit card required.
             </p>
             <Link to="/create/product">
-              <Button variant="hero" size="lg">
+              <Button variant="hero" size="lg" className="hover-lift">
                 Try Product Photography Free
                 <Sparkles className="w-5 h-5 ml-2" />
               </Button>

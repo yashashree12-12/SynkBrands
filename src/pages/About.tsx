@@ -1,16 +1,17 @@
 import { Helmet } from 'react-helmet-async';
+import { Link } from 'react-router-dom';
 import { Navbar } from '@/components/Navbar';
 import { Footer } from '@/components/Footer';
 import { Button } from '@/components/ui/button';
-import { Users, Target, Zap, Globe, Award, Heart } from 'lucide-react';
+import { Users, Target, Zap, Globe, Award, Heart, Rocket, UserCircle, Code, Palette, Megaphone, DollarSign } from 'lucide-react';
 
 const teamMembers = [
-  { name: 'Alex Chen', role: 'CEO & Founder', image: '👨‍💼' },
-  { name: 'Sarah Johnson', role: 'CTO', image: '👩‍💻' },
-  { name: 'Michael Park', role: 'Head of AI', image: '👨‍🔬' },
-  { name: 'Emily Davis', role: 'Head of Design', image: '👩‍🎨' },
-  { name: 'David Kim', role: 'Head of Marketing', image: '👨‍💼' },
-  { name: 'Lisa Wang', role: 'Head of Sales', image: '👩‍💼' },
+  { name: 'Alex Chen', role: 'CEO & Founder', Icon: UserCircle },
+  { name: 'Sarah Johnson', role: 'CTO', Icon: Code },
+  { name: 'Michael Park', role: 'Head of AI', Icon: Zap },
+  { name: 'Emily Davis', role: 'Head of Design', Icon: Palette },
+  { name: 'David Kim', role: 'Head of Marketing', Icon: Megaphone },
+  { name: 'Lisa Wang', role: 'Head of Sales', Icon: DollarSign },
 ];
 
 const values = [
@@ -37,7 +38,7 @@ const About = () => {
         <section className="relative py-24 overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-b from-primary/5 to-transparent" />
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
-            <div className="text-center max-w-4xl mx-auto">
+            <div className="text-center max-w-4xl mx-auto animate-fade-in">
               <h1 className="font-display text-4xl md:text-6xl font-bold text-foreground mb-6">
                 Empowering Brands with <span className="text-gradient">AI Innovation</span>
               </h1>
@@ -52,7 +53,7 @@ const About = () => {
         <section className="py-20 bg-secondary/30">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid lg:grid-cols-2 gap-12 items-center">
-              <div>
+              <div className="animate-fade-in">
                 <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-6">
                   Our Story
                 </h2>
@@ -66,9 +67,11 @@ const About = () => {
                   Today, we serve over 500,000 brands worldwide, from small businesses to Fortune 500 companies, helping them create millions of pieces of content every month.
                 </p>
               </div>
-              <div className="relative">
-                <div className="aspect-video rounded-2xl bg-gradient-to-br from-primary via-accent to-primary/50 flex items-center justify-center">
-                  <span className="text-8xl">🚀</span>
+              <div className="relative animate-scale-in">
+                <div className="aspect-video rounded-2xl bg-gradient-to-br from-primary via-accent to-primary/50 flex items-center justify-center shadow-2xl">
+                  <div className="w-24 h-24 rounded-2xl bg-white/20 backdrop-blur-sm flex items-center justify-center">
+                    <Rocket className="w-12 h-12 text-white" />
+                  </div>
                 </div>
               </div>
             </div>
@@ -88,8 +91,10 @@ const About = () => {
             </div>
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
               {values.map((value) => (
-                <div key={value.title} className="p-6 rounded-2xl bg-card border border-border hover:border-primary/50 transition-colors">
-                  <value.icon className="w-12 h-12 text-primary mb-4" />
+                <div key={value.title} className="p-6 rounded-2xl bg-card border border-border hover:border-primary/50 transition-all hover-lift group">
+                  <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-colors">
+                    <value.icon className="w-6 h-6 text-primary" />
+                  </div>
                   <h3 className="font-display text-xl font-bold text-foreground mb-2">{value.title}</h3>
                   <p className="text-muted-foreground">{value.description}</p>
                 </div>
@@ -111,9 +116,9 @@ const About = () => {
             </div>
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
               {teamMembers.map((member) => (
-                <div key={member.name} className="text-center p-6 rounded-2xl bg-card border border-border">
-                  <div className="w-24 h-24 rounded-full bg-gradient-to-br from-primary to-accent mx-auto mb-4 flex items-center justify-center text-4xl">
-                    {member.image}
+                <div key={member.name} className="text-center p-6 rounded-2xl bg-card border border-border hover-lift">
+                  <div className="w-24 h-24 rounded-full bg-gradient-to-br from-primary to-accent mx-auto mb-4 flex items-center justify-center">
+                    <member.Icon className="w-12 h-12 text-white" />
                   </div>
                   <h3 className="font-display text-xl font-bold text-foreground">{member.name}</h3>
                   <p className="text-muted-foreground">{member.role}</p>
@@ -133,7 +138,9 @@ const About = () => {
               Be part of the AI content creation revolution.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button variant="hero" size="lg">Get Started Free</Button>
+              <Link to="/create">
+                <Button variant="hero" size="lg" className="hover-lift">Get Started Free</Button>
+              </Link>
               <Button variant="outline" size="lg">View Careers</Button>
             </div>
           </div>

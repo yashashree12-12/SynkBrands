@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { Navbar } from '@/components/Navbar';
 import { Footer } from '@/components/Footer';
 import { Button } from '@/components/ui/button';
-import { Check, Sparkles, Instagram, Facebook, Linkedin, Twitter, Calendar, BarChart3 } from 'lucide-react';
+import { Check, Sparkles, Instagram, Facebook, Linkedin, Twitter, Calendar, BarChart3, PenLine, Hash, FlaskConical, Users } from 'lucide-react';
 
 const platforms = [
   { icon: Instagram, name: 'Instagram', color: 'from-pink-500 to-purple-500' },
@@ -13,12 +13,12 @@ const platforms = [
 ];
 
 const features = [
-  { title: 'AI Caption Writer', description: 'Generate engaging captions that drive engagement and conversions.', icon: '✍️' },
-  { title: 'Hashtag Generator', description: 'Get trending and relevant hashtags for maximum reach.', icon: '#️⃣' },
-  { title: 'Content Calendar', description: 'Plan and schedule your posts across all platforms.', icon: '📅' },
-  { title: 'Analytics Dashboard', description: 'Track performance and optimize your content strategy.', icon: '📊' },
-  { title: 'A/B Testing', description: 'Test different versions to find what works best.', icon: '🔬' },
-  { title: 'Team Collaboration', description: 'Work together with your team on content creation.', icon: '👥' },
+  { title: 'AI Caption Writer', description: 'Generate engaging captions that drive engagement and conversions.', Icon: PenLine },
+  { title: 'Hashtag Generator', description: 'Get trending and relevant hashtags for maximum reach.', Icon: Hash },
+  { title: 'Content Calendar', description: 'Plan and schedule your posts across all platforms.', Icon: Calendar },
+  { title: 'Analytics Dashboard', description: 'Track performance and optimize your content strategy.', Icon: BarChart3 },
+  { title: 'A/B Testing', description: 'Test different versions to find what works best.', Icon: FlaskConical },
+  { title: 'Team Collaboration', description: 'Work together with your team on content creation.', Icon: Users },
 ];
 
 const SocialMediaPosts = () => {
@@ -36,7 +36,7 @@ const SocialMediaPosts = () => {
         <section className="relative py-24 overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-b from-primary/5 to-transparent" />
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
-            <div className="text-center max-w-4xl mx-auto">
+            <div className="text-center max-w-4xl mx-auto animate-fade-in">
               <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary/10 rounded-full mb-6">
                 <Calendar className="w-5 h-5 text-primary" />
                 <span className="text-sm font-medium text-primary">Social Media Posts</span>
@@ -49,7 +49,7 @@ const SocialMediaPosts = () => {
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Link to="/create/social">
-                  <Button variant="hero" size="lg">
+                  <Button variant="hero" size="lg" className="hover-lift">
                     Create Your First Post
                     <Sparkles className="w-5 h-5 ml-2" />
                   </Button>
@@ -60,10 +60,11 @@ const SocialMediaPosts = () => {
 
             {/* Platform Icons */}
             <div className="mt-16 flex justify-center gap-6">
-              {platforms.map((platform) => (
+              {platforms.map((platform, index) => (
                 <div
                   key={platform.name}
-                  className={`w-16 h-16 rounded-2xl bg-gradient-to-br ${platform.color} flex items-center justify-center shadow-lg`}
+                  className={`w-16 h-16 rounded-2xl bg-gradient-to-br ${platform.color} flex items-center justify-center shadow-lg hover-lift`}
+                  style={{ animationDelay: `${index * 0.1}s` }}
                 >
                   <platform.icon className="w-8 h-8 text-white" />
                 </div>
@@ -85,8 +86,10 @@ const SocialMediaPosts = () => {
             </div>
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
               {features.map((feature) => (
-                <div key={feature.title} className="p-6 rounded-2xl bg-card border border-border hover:border-primary/50 transition-colors">
-                  <div className="text-4xl mb-4">{feature.icon}</div>
+                <div key={feature.title} className="p-6 rounded-2xl bg-card border border-border hover:border-primary/50 transition-all hover-lift group">
+                  <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-colors">
+                    <feature.Icon className="w-6 h-6 text-primary" />
+                  </div>
                   <h3 className="font-display text-xl font-bold text-foreground mb-2">{feature.title}</h3>
                   <p className="text-muted-foreground">{feature.description}</p>
                 </div>
@@ -99,7 +102,7 @@ const SocialMediaPosts = () => {
         <section className="py-20">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid lg:grid-cols-2 gap-12 items-center">
-              <div>
+              <div className="animate-fade-in">
                 <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-6">
                   Optimized for Every Platform
                 </h2>
@@ -125,7 +128,7 @@ const SocialMediaPosts = () => {
                 {platforms.map((platform) => (
                   <div
                     key={platform.name}
-                    className={`aspect-square rounded-2xl bg-gradient-to-br ${platform.color} p-6 flex flex-col items-center justify-center text-white`}
+                    className={`aspect-square rounded-2xl bg-gradient-to-br ${platform.color} p-6 flex flex-col items-center justify-center text-white hover-lift`}
                   >
                     <platform.icon className="w-12 h-12 mb-3" />
                     <span className="font-medium">{platform.name}</span>
@@ -146,7 +149,7 @@ const SocialMediaPosts = () => {
               Start creating viral content today. No design or copywriting skills required.
             </p>
             <Link to="/create/social">
-              <Button variant="hero" size="lg">
+              <Button variant="hero" size="lg" className="hover-lift">
                 Start Creating Free
                 <Sparkles className="w-5 h-5 ml-2" />
               </Button>

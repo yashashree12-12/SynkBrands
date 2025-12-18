@@ -1,14 +1,16 @@
+import { Smartphone, ShoppingBag, Video, Layers, Bot, Calendar, Zap, Camera, Globe, Clock } from 'lucide-react';
+
 const showcaseItems = [
-  { title: 'Social Media Post', color: 'from-pink-500 to-rose-500', icon: '📱' },
-  { title: 'Product Ad', color: 'from-orange-500 to-amber-500', icon: '🛍️' },
-  { title: 'Video Ads', color: 'from-purple-500 to-violet-500', icon: '🎬' },
-  { title: 'Carousel Ads', color: 'from-blue-500 to-cyan-500', icon: '🎠' },
-  { title: 'AI Assistant', color: 'from-green-500 to-emerald-500', icon: '🤖' },
-  { title: 'Auto Post', color: 'from-indigo-500 to-blue-500', icon: '📅' },
-  { title: 'API Access', color: 'from-gray-600 to-gray-800', icon: '⚡' },
-  { title: 'Studio Photography', color: 'from-yellow-500 to-orange-500', icon: '📸' },
-  { title: 'Multi-Language', color: 'from-teal-500 to-cyan-500', icon: '🌍' },
-  { title: 'Schedule', color: 'from-red-500 to-pink-500', icon: '⏰' },
+  { title: 'Social Media Post', color: 'from-pink-500 to-rose-500', Icon: Smartphone },
+  { title: 'Product Ad', color: 'from-orange-500 to-amber-500', Icon: ShoppingBag },
+  { title: 'Video Ads', color: 'from-purple-500 to-violet-500', Icon: Video },
+  { title: 'Carousel Ads', color: 'from-blue-500 to-cyan-500', Icon: Layers },
+  { title: 'AI Assistant', color: 'from-green-500 to-emerald-500', Icon: Bot },
+  { title: 'Auto Post', color: 'from-indigo-500 to-blue-500', Icon: Calendar },
+  { title: 'API Access', color: 'from-gray-600 to-gray-800', Icon: Zap },
+  { title: 'Studio Photography', color: 'from-yellow-500 to-orange-500', Icon: Camera },
+  { title: 'Multi-Language', color: 'from-teal-500 to-cyan-500', Icon: Globe },
+  { title: 'Schedule', color: 'from-red-500 to-pink-500', Icon: Clock },
 ];
 
 export const ShowcaseCarousel = () => {
@@ -26,10 +28,12 @@ export const ShowcaseCarousel = () => {
           {[...showcaseItems, ...showcaseItems].map((item, index) => (
             <div
               key={index}
-              className="flex-shrink-0 w-64 h-80 rounded-2xl overflow-hidden shadow-lg card-hover group cursor-pointer"
+              className="flex-shrink-0 w-64 h-80 rounded-2xl overflow-hidden shadow-lg hover-lift group cursor-pointer"
             >
               <div className={`w-full h-full bg-gradient-to-br ${item.color} flex flex-col items-center justify-center p-6 relative`}>
-                <span className="text-6xl mb-4">{item.icon}</span>
+                <div className="w-20 h-20 rounded-2xl bg-white/20 backdrop-blur-sm flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                  <item.Icon className="w-10 h-10 text-white" />
+                </div>
                 <h3 className="text-primary-foreground font-display font-bold text-lg text-center">
                   {item.title}
                 </h3>
