@@ -4,6 +4,7 @@ import { Navbar } from '@/components/Navbar';
 import { Footer } from '@/components/Footer';
 import { Button } from '@/components/ui/button';
 import { Check, Sparkles, Zap, Layers, Download, Palette, Image, Wand2 } from 'lucide-react';
+import aiImageFeature from '@/assets/ai-image-feature.png';
 
 const features = [
   { icon: Sparkles, title: 'AI-Powered Generation', description: 'Create stunning visuals with advanced AI that understands your brand.' },
@@ -68,26 +69,37 @@ const ImageGenerator = () => {
                   ))}
                 </div>
               </div>
-              <div className="relative">
-                <div className="aspect-square rounded-3xl bg-gradient-to-br from-primary via-accent to-primary/50 p-8 flex items-center justify-center">
-                  <div className="bg-card/90 backdrop-blur rounded-2xl p-6 w-full max-w-sm">
-                    <div className="flex items-center gap-3 mb-4">
-                      <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center">
-                        <Image className="w-5 h-5 text-primary" />
-                      </div>
-                      <div>
-                        <h3 className="font-medium text-foreground">Image Generator</h3>
-                        <p className="text-xs text-muted-foreground">Ready to create</p>
-                      </div>
+              <div className="relative animate-scale-in">
+                <div className="relative rounded-2xl overflow-hidden shadow-2xl border border-border/50 group">
+                  <img 
+                    src={aiImageFeature} 
+                    alt="AI Image Generator showing creative design workspace with product photography" 
+                    className="w-full h-auto group-hover:scale-105 transition-transform duration-500"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-background/30 to-transparent pointer-events-none" />
+                </div>
+                
+                {/* Floating badges */}
+                <div className="absolute -top-4 -right-4 bg-card border border-border rounded-xl p-3 shadow-lg animate-float">
+                  <div className="flex items-center gap-2">
+                    <div className="w-8 h-8 bg-primary/20 rounded-lg flex items-center justify-center">
+                      <Sparkles className="w-4 h-4 text-primary" />
                     </div>
-                    <div className="space-y-3">
-                      <div className="h-3 bg-secondary rounded-full w-full" />
-                      <div className="h-3 bg-secondary rounded-full w-3/4" />
-                      <div className="h-3 bg-secondary rounded-full w-1/2" />
+                    <div>
+                      <p className="text-xs text-muted-foreground">Images Created</p>
+                      <p className="text-sm font-bold text-foreground">5M+</p>
                     </div>
-                    <div className="mt-4 grid grid-cols-2 gap-2">
-                      <div className="aspect-square bg-gradient-to-br from-pink-500 to-orange-500 rounded-xl" />
-                      <div className="aspect-square bg-gradient-to-br from-blue-500 to-purple-500 rounded-xl" />
+                  </div>
+                </div>
+                
+                <div className="absolute -bottom-4 -left-4 bg-card border border-border rounded-xl p-3 shadow-lg animate-float-delayed">
+                  <div className="flex items-center gap-2">
+                    <div className="w-8 h-8 bg-green-500/20 rounded-lg flex items-center justify-center">
+                      <Zap className="w-4 h-4 text-green-500" />
+                    </div>
+                    <div>
+                      <p className="text-xs text-muted-foreground">Gen Time</p>
+                      <p className="text-sm font-bold text-foreground">~5 sec</p>
                     </div>
                   </div>
                 </div>

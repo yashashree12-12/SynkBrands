@@ -3,7 +3,8 @@ import { Link } from 'react-router-dom';
 import { Navbar } from '@/components/Navbar';
 import { Footer } from '@/components/Footer';
 import { Button } from '@/components/ui/button';
-import { Check, Sparkles, Zap, Film, Download, Music, Video, Wand2, ShoppingBag, Smartphone, BookOpen, Clapperboard } from 'lucide-react';
+import { Check, Sparkles, Zap, Film, Download, Music, Video, Wand2, ShoppingBag, Smartphone, BookOpen, Clapperboard, Play } from 'lucide-react';
+import aiVideoFeature from '@/assets/ai-video-feature.png';
 
 const features = [
   { icon: Film, title: 'AI Video Creation', description: 'Generate professional videos from text descriptions or product images.' },
@@ -67,26 +68,30 @@ const VideoGenerator = () => {
                 </div>
               </div>
               <div className="relative animate-scale-in">
-                <div className="aspect-video rounded-3xl bg-gradient-to-br from-accent via-primary to-accent/50 p-6 flex items-center justify-center overflow-hidden shadow-2xl">
-                  <div className="bg-card/90 backdrop-blur rounded-2xl p-6 w-full">
-                    <div className="flex items-center gap-3 mb-4">
-                      <div className="w-10 h-10 rounded-xl bg-accent/10 flex items-center justify-center">
-                        <Video className="w-5 h-5 text-accent" />
-                      </div>
-                      <div>
-                        <h3 className="font-medium text-foreground">Video Generator</h3>
-                        <p className="text-xs text-muted-foreground">Processing...</p>
-                      </div>
+                <div className="relative rounded-2xl overflow-hidden shadow-2xl border border-border/50 group">
+                  <img 
+                    src={aiVideoFeature} 
+                    alt="AI Video Generator Interface showing professional video editing timeline" 
+                    className="w-full h-auto group-hover:scale-105 transition-transform duration-500"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-background/30 to-transparent pointer-events-none" />
+                  <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                    <div className="w-16 h-16 rounded-full bg-white/90 flex items-center justify-center shadow-lg">
+                      <Play className="w-8 h-8 text-foreground ml-1" />
                     </div>
-                    <div className="aspect-video bg-secondary rounded-xl mb-4 flex items-center justify-center relative overflow-hidden">
-                      <div className="absolute inset-0 bg-gradient-to-r from-accent/20 to-primary/20 animate-pulse-slow" />
-                      <Film className="w-12 h-12 text-muted-foreground" />
+                  </div>
+                </div>
+                
+                {/* Floating badge */}
+                <div className="absolute -bottom-4 -right-4 bg-card border border-border rounded-xl p-3 shadow-lg animate-float">
+                  <div className="flex items-center gap-2">
+                    <div className="w-8 h-8 bg-accent/20 rounded-lg flex items-center justify-center">
+                      <Zap className="w-4 h-4 text-accent" />
                     </div>
-                    <div className="flex items-center gap-2">
-                      <div className="flex-1 h-1 bg-accent rounded-full" style={{ width: '60%' }} />
-                      <div className="flex-1 h-1 bg-secondary rounded-full" />
+                    <div>
+                      <p className="text-xs text-muted-foreground">Render Time</p>
+                      <p className="text-sm font-bold text-foreground">~2 min</p>
                     </div>
-                    <p className="text-xs text-muted-foreground mt-2 text-center">Generating video... 60%</p>
                   </div>
                 </div>
               </div>
