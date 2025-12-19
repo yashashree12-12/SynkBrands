@@ -1,9 +1,9 @@
 import { Button } from '@/components/ui/button';
 import { Play, Sparkles, Users, Video, Camera, Mic } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import heroDashboard from '@/assets/hero-dashboard.png';
-import aiVideoFeature from '@/assets/ai-video-feature.png';
-import aiImageFeature from '@/assets/ai-image-feature.png';
+import videoGeneratorPreview from '@/assets/video-generator-preview.png';
+import imageGeneratorPreview from '@/assets/image-generator-preview.png';
+import contentShowcase from '@/assets/content-showcase.png';
 
 const features = [
   {
@@ -11,7 +11,7 @@ const features = [
     description: 'Enter your product URL and let SynkBrands generate high-performing product ad videos. Scale ad campaigns faster with ad videos that are tested to convert and reduce CPA.',
     icon: Play,
     color: 'from-purple-500 to-pink-500',
-    image: aiVideoFeature,
+    image: videoGeneratorPreview,
     link: '/features/video-generator',
   },
   {
@@ -19,7 +19,7 @@ const features = [
     description: 'Turn simple product images into professional product ads without expensive cameras, props, or editing. Save 90% of time & cost on traditional photoshoots.',
     icon: Camera,
     color: 'from-orange-500 to-red-500',
-    image: aiImageFeature,
+    image: imageGeneratorPreview,
     link: '/features/product-photography',
   },
   {
@@ -27,7 +27,7 @@ const features = [
     description: 'Create human-like UGC ads and videos without hiring actors or expensive video shoots. Customize avatars by age, gender, and ethnicity to match your audience.',
     icon: Mic,
     color: 'from-blue-500 to-cyan-500',
-    image: heroDashboard,
+    image: contentShowcase,
     link: '/features/ugc-videos',
   },
 ];

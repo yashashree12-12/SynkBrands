@@ -1,8 +1,7 @@
 import { Button } from '@/components/ui/button';
-import { Star, Award, ShieldCheck, Zap } from 'lucide-react';
+import { Star, Award, ShieldCheck, Zap, Play } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import heroDashboard from '@/assets/hero-dashboard.png';
-
+import dashboardPreview from '@/assets/dashboard-preview.png';
 const platformLogos = [
   { name: 'G2', icon: Award },
   { name: 'Shopify', icon: ShieldCheck },
@@ -75,11 +74,18 @@ export const HeroSection = () => {
           <div className="relative animate-fade-in-up">
             <div className="relative rounded-2xl overflow-hidden shadow-2xl border border-border/50 group">
               <img 
-                src={heroDashboard} 
-                alt="SynkBrands AI Dashboard showing social media content creation" 
+                src={dashboardPreview} 
+                alt="SynkBrands AI Dashboard showing social media content creation and analytics" 
                 className="w-full h-auto group-hover:scale-105 transition-transform duration-500"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-background/20 to-transparent pointer-events-none" />
+              
+              {/* Play button overlay */}
+              <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                <div className="w-16 h-16 rounded-full bg-white/90 flex items-center justify-center shadow-xl cursor-pointer hover:scale-110 transition-transform">
+                  <Play className="w-7 h-7 text-purple ml-1" />
+                </div>
+              </div>
             </div>
             
             {/* Floating badges */}
