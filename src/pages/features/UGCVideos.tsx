@@ -4,6 +4,7 @@ import { Navbar } from '@/components/Navbar';
 import { Footer } from '@/components/Footer';
 import { Button } from '@/components/ui/button';
 import { Video, Users, Mic, Sparkles, CheckCircle2, Play, ArrowRight, Clock, Palette, Languages, Star, Zap } from 'lucide-react';
+import ugcVideoPreview from '@/assets/ugc-video-preview.png';
 
 const features = [
   { icon: Users, title: 'AI Avatars', description: 'Choose from diverse AI presenters or create custom avatars' },
@@ -15,12 +16,12 @@ const features = [
 ];
 
 const videoTypes = [
-  { name: 'Product Reviews', description: 'Authentic-feeling product testimonials' },
-  { name: 'Unboxing Videos', description: 'Exciting product reveal content' },
-  { name: 'Tutorial Content', description: 'How-to and educational videos' },
-  { name: 'Testimonials', description: 'Customer success story videos' },
-  { name: 'Behind the Scenes', description: 'Brand authenticity content' },
-  { name: 'Trend Videos', description: 'Viral format adaptations' },
+  { name: 'Product Reviews', description: 'Authentic-feeling product testimonials', icon: Star },
+  { name: 'Unboxing Videos', description: 'Exciting product reveal content', icon: Video },
+  { name: 'Tutorial Content', description: 'How-to and educational videos', icon: Play },
+  { name: 'Testimonials', description: 'Customer success story videos', icon: Users },
+  { name: 'Behind the Scenes', description: 'Brand authenticity content', icon: Sparkles },
+  { name: 'Trend Videos', description: 'Viral format adaptations', icon: Zap },
 ];
 
 const UGCVideos = () => {
@@ -79,21 +80,17 @@ const UGCVideos = () => {
 
               <div className="relative">
                 <div className="absolute inset-0 gradient-bar opacity-20 blur-3xl rounded-full"></div>
-                <div className="relative">
-                  <div className="aspect-[9/16] max-w-[300px] mx-auto bg-card rounded-3xl border border-border overflow-hidden shadow-2xl">
-                    <div className="h-full bg-gradient-to-br from-primary/20 to-accent/20 flex items-center justify-center">
-                      <div className="text-center p-6">
-                        <div className="w-20 h-20 rounded-full bg-white/20 backdrop-blur mx-auto mb-4 flex items-center justify-center">
-                          <Play className="w-8 h-8 text-white" />
-                        </div>
-                        <p className="text-foreground font-medium">AI Avatar Preview</p>
-                        <p className="text-sm text-muted-foreground mt-2">Your UGC video here</p>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="absolute -bottom-4 -right-4 w-24 h-24 bg-card rounded-2xl border border-border p-2 shadow-xl">
-                    <div className="w-full h-full bg-secondary rounded-xl flex items-center justify-center">
-                      <Mic className="w-8 h-8 text-primary" />
+                <div className="relative rounded-2xl overflow-hidden shadow-2xl border border-border/50 group">
+                  <img 
+                    src={ugcVideoPreview} 
+                    alt="UGC Video Creator Interface" 
+                    className="w-full h-auto group-hover:scale-[1.02] transition-transform duration-500"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-background/40 via-transparent to-transparent" />
+                  <div className="absolute bottom-4 left-4 right-4">
+                    <div className="bg-card/90 backdrop-blur-sm rounded-xl p-4 border border-border">
+                      <p className="text-foreground font-medium">AI Avatar Preview</p>
+                      <p className="text-sm text-muted-foreground">Your UGC video here</p>
                     </div>
                   </div>
                 </div>
@@ -112,7 +109,10 @@ const UGCVideos = () => {
             </div>
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
               {videoTypes.map((type, index) => (
-                <div key={index} className="p-4 bg-background rounded-xl border border-border text-center hover:border-primary/50 transition-colors">
+                <div key={index} className="p-4 bg-background rounded-xl border border-border text-center hover:border-primary/50 hover:shadow-lg transition-all group cursor-pointer">
+                  <div className="w-12 h-12 mx-auto mb-3 rounded-xl bg-gradient-to-br from-accent to-primary flex items-center justify-center group-hover:scale-110 transition-transform">
+                    <type.icon className="w-6 h-6 text-white" />
+                  </div>
                   <h3 className="font-medium text-foreground mb-1">{type.name}</h3>
                   <p className="text-xs text-muted-foreground">{type.description}</p>
                 </div>

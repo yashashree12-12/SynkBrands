@@ -3,7 +3,8 @@ import { Link } from 'react-router-dom';
 import { Navbar } from '@/components/Navbar';
 import { Footer } from '@/components/Footer';
 import { Button } from '@/components/ui/button';
-import { Layers, Sparkles, CheckCircle2, Play, ArrowRight, Instagram, Linkedin, Facebook, Palette, Type, Image, Wand2, MousePointerClick } from 'lucide-react';
+import { Layers, Sparkles, CheckCircle2, Play, ArrowRight, Instagram, Linkedin, Facebook, Palette, Type, Image, Wand2, MousePointerClick, BookOpen, ShoppingBag, FileText, Star, Zap } from 'lucide-react';
+import carouselPreview from '@/assets/carousel-preview.png';
 
 const features = [
   { icon: Layers, title: 'Multi-Slide Generation', description: 'AI creates cohesive carousel with perfect visual flow' },
@@ -15,12 +16,12 @@ const features = [
 ];
 
 const carouselTypes = [
-  { name: 'Educational', icon: '📚', description: 'Tips, tutorials, how-tos' },
-  { name: 'Product Showcase', icon: '🛍️', description: 'Features and benefits' },
-  { name: 'Story Format', icon: '📖', description: 'Narrative brand content' },
-  { name: 'Listicles', icon: '📝', description: 'Top 10, best of lists' },
-  { name: 'Before/After', icon: '✨', description: 'Transformation stories' },
-  { name: 'Testimonials', icon: '⭐', description: 'Customer reviews' },
+  { name: 'Educational', icon: BookOpen, description: 'Tips, tutorials, how-tos' },
+  { name: 'Product Showcase', icon: ShoppingBag, description: 'Features and benefits' },
+  { name: 'Story Format', icon: FileText, description: 'Narrative brand content' },
+  { name: 'Listicles', icon: Layers, description: 'Top 10, best of lists' },
+  { name: 'Before/After', icon: Sparkles, description: 'Transformation stories' },
+  { name: 'Testimonials', icon: Star, description: 'Customer reviews' },
 ];
 
 const CarouselAds = () => {
@@ -63,15 +64,15 @@ const CarouselAds = () => {
                   </Button>
                 </div>
                 <div className="flex items-center gap-4 text-sm text-muted-foreground">
-                  <span className="flex items-center gap-2">
+                  <span className="flex items-center gap-2 px-3 py-1.5 bg-secondary rounded-full">
                     <Instagram className="w-4 h-4" />
                     Instagram
                   </span>
-                  <span className="flex items-center gap-2">
+                  <span className="flex items-center gap-2 px-3 py-1.5 bg-secondary rounded-full">
                     <Linkedin className="w-4 h-4" />
                     LinkedIn
                   </span>
-                  <span className="flex items-center gap-2">
+                  <span className="flex items-center gap-2 px-3 py-1.5 bg-secondary rounded-full">
                     <Facebook className="w-4 h-4" />
                     Facebook
                   </span>
@@ -80,18 +81,13 @@ const CarouselAds = () => {
 
               <div className="relative">
                 <div className="absolute inset-0 gradient-bar opacity-20 blur-3xl rounded-full"></div>
-                <div className="relative flex gap-4 justify-center">
-                  {[0, 1, 2].map((i) => (
-                    <div
-                      key={i}
-                      className="w-48 aspect-square bg-card rounded-2xl border border-border shadow-xl"
-                      style={{ transform: `translateY(${i * 20}px) rotate(${(i - 1) * 5}deg)` }}
-                    >
-                      <div className="h-full bg-gradient-to-br from-pink-500/20 to-blue-500/20 rounded-2xl flex items-center justify-center">
-                        <span className="text-4xl font-bold text-foreground/30">{i + 1}</span>
-                      </div>
-                    </div>
-                  ))}
+                <div className="relative rounded-2xl overflow-hidden shadow-2xl border border-border/50 group">
+                  <img 
+                    src={carouselPreview} 
+                    alt="Carousel Creator Interface" 
+                    className="w-full h-auto group-hover:scale-[1.02] transition-transform duration-500"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-background/40 via-transparent to-transparent" />
                 </div>
               </div>
             </div>
@@ -108,8 +104,10 @@ const CarouselAds = () => {
             </div>
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
               {carouselTypes.map((type, index) => (
-                <div key={index} className="p-4 bg-background rounded-xl border border-border text-center hover:border-primary/50 transition-colors cursor-pointer">
-                  <span className="text-3xl mb-2 block">{type.icon}</span>
+                <div key={index} className="p-4 bg-background rounded-xl border border-border text-center hover:border-primary/50 hover:shadow-lg transition-all cursor-pointer group">
+                  <div className="w-12 h-12 mx-auto mb-3 rounded-xl bg-gradient-to-br from-pink-500 to-blue-500 flex items-center justify-center group-hover:scale-110 transition-transform">
+                    <type.icon className="w-6 h-6 text-white" />
+                  </div>
                   <h3 className="font-medium text-foreground mb-1">{type.name}</h3>
                   <p className="text-xs text-muted-foreground">{type.description}</p>
                 </div>

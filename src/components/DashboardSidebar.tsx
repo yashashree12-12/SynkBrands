@@ -34,8 +34,9 @@ const mainNavItems: SidebarItem[] = [
   { icon: LayoutDashboard, label: 'Dashboard', href: '/dashboard' },
   { icon: Plus, label: 'Create New', href: '/create' },
   { icon: FolderOpen, label: 'My Content', href: '/dashboard?tab=content' },
-  { icon: Calendar, label: 'Schedule', href: '/dashboard?tab=schedule' },
+  { icon: Calendar, label: 'Content Calendar', href: '/dashboard/calendar' },
   { icon: BarChart3, label: 'Analytics', href: '/dashboard?tab=analytics' },
+  { icon: Target, label: 'Auto Post', href: '/dashboard/auto-post' },
 ];
 
 const createItems: SidebarItem[] = [
@@ -47,6 +48,7 @@ const createItems: SidebarItem[] = [
 ];
 
 const bottomNavItems: SidebarItem[] = [
+  { icon: Target, label: 'Competitor Analysis', href: '/dashboard/competitor-analysis' },
   { icon: Building2, label: 'Brand Settings', href: '/dashboard?tab=brand' },
   { icon: Settings, label: 'Settings', href: '/settings' },
   { icon: HelpCircle, label: 'Help & Support', href: '/contact' },
