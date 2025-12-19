@@ -27,6 +27,11 @@ import Agencies from "./pages/solutions/Agencies";
 import Ecommerce from "./pages/solutions/Ecommerce";
 import Creators from "./pages/solutions/Creators";
 
+// Dashboard Pages
+import ContentCalendar from "./pages/dashboard/ContentCalendar";
+import AutoPost from "./pages/dashboard/AutoPost";
+import CompetitorAnalysisDashboard from "./pages/dashboard/CompetitorAnalysisDashboard";
+
 const queryClient = new QueryClient();
 
 const App = () => (
@@ -58,6 +63,11 @@ const App = () => (
               <Route path="/features/meme-generator" element={<MemeGenerator />} />
               <Route path="/features/content-scheduler" element={<ContentScheduler />} />
               <Route path="/features/competitor-analysis" element={<CompetitorAnalysis />} />
+              
+              {/* Dashboard Pages */}
+              <Route path="/dashboard/calendar" element={<ContentCalendar />} />
+              <Route path="/dashboard/auto-post" element={<AutoPost />} />
+              <Route path="/dashboard/competitor-analysis" element={<CompetitorAnalysisDashboard />} />
               
               {/* Solution Pages */}
               <Route path="/solutions/agencies" element={<Agencies />} />

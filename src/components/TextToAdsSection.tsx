@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
-import { FileText, Palette, Globe, LayoutGrid, Sparkles, PenTool, Languages, Maximize2 } from 'lucide-react';
+import { FileText, Palette, Globe, LayoutGrid, Sparkles, PenTool, Languages, Maximize2, Play, Image, Wand2 } from 'lucide-react';
+import textToAdsPreview from '@/assets/text-to-ads-preview.png';
 
 const tabs = [
   { id: 'text-to-ads', label: 'Text-to-Ads', icon: FileText },
@@ -48,6 +49,12 @@ const tabContent = {
   },
 };
 
+const features = [
+  { icon: Wand2, title: 'Design Ads with Animations', description: 'Eye-catching motion graphics' },
+  { icon: Image, title: 'Stock Images and Videos', description: 'Access millions of premium assets' },
+  { icon: Play, title: 'Optimized Call to Actions', description: 'AI-crafted CTAs that convert' },
+];
+
 export const TextToAdsSection = () => {
   const [activeTab, setActiveTab] = useState('text-to-ads');
   const content = tabContent[activeTab as keyof typeof tabContent];
@@ -55,9 +62,27 @@ export const TextToAdsSection = () => {
   return (
     <section className="py-20 bg-secondary/30" id="features">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-center text-foreground mb-12">
+        <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-center text-foreground mb-4">
           Go from Text to fully Branded Ads in seconds
         </h2>
+        <p className="text-center text-muted-foreground max-w-3xl mx-auto mb-12">
+          Bring your ads to life with AI visuals, motions, & the perfect CTA
+        </p>
+
+        {/* Feature Pills */}
+        <div className="flex flex-wrap justify-center gap-4 mb-12">
+          {features.map((feature, index) => (
+            <div key={index} className="flex items-center gap-3 px-5 py-3 bg-card rounded-xl border border-border hover:border-primary/50 transition-colors">
+              <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center">
+                <feature.icon className="w-5 h-5 text-primary" />
+              </div>
+              <div>
+                <h4 className="font-medium text-foreground text-sm">{feature.title}</h4>
+                <p className="text-xs text-muted-foreground">{feature.description}</p>
+              </div>
+            </div>
+          ))}
+        </div>
 
         {/* Tabs */}
         <div className="flex flex-wrap justify-center gap-2 mb-12">
@@ -95,10 +120,13 @@ export const TextToAdsSection = () => {
           </div>
 
           <div className="animate-fade-in" key={`${activeTab}-image`}>
-            <div className={`aspect-square rounded-3xl bg-gradient-to-br ${content.color} flex items-center justify-center shadow-2xl`}>
-              <div className="w-32 h-32 rounded-3xl bg-white/20 backdrop-blur-sm flex items-center justify-center">
-                <content.Icon className="w-16 h-16 text-white" />
-              </div>
+            <div className="relative rounded-2xl overflow-hidden shadow-2xl border border-border/50 group">
+              <img 
+                src={textToAdsPreview} 
+                alt="Text to Ads Preview" 
+                className="w-full h-auto group-hover:scale-[1.02] transition-transform duration-500"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-background/30 via-transparent to-transparent" />
             </div>
           </div>
         </div>
